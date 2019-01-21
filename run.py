@@ -14,5 +14,4 @@ def choose_option():
             UserModels.signup()
         elif option == 2:
             UserModels.login()
-
 choose_option()
