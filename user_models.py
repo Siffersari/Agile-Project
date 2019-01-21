@@ -68,7 +68,7 @@ class UserModels(object):
 
     def create_comment(self, username):
        """Create a comment."""
-       comment_id = len(self.comments)
+       comment_id = len(self.comments) + 1
        title = input("Enter comment title:  ")
        body = input("Enter comment body:    ")
        username = [user for user in users if user["username"] == username]
