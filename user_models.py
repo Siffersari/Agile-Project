@@ -90,8 +90,27 @@ class UserModels(object):
        else:
            print("Sad to see you go!!") 
 
-    def edit_comment(self):
-        pass
+    def edit_comment(self, username):
+        new_comment_title = str(input("Please enter your comment title\n >"))
+        new_comment_body = str(input("Please enter your comment body \n >"))
+        for comment in comments:
+            user = comment.get('username')
+            comment_to_edit = [comment for comment in comments if user == "JW" ][0]
+            if bool(comment_to_edit) is True:
+                comment_title = comment.get('title')
+                comment_body = comment.get('body')
+                comment.update({
+                        'title': new_comment_title,
+                        'body': new_comment_body 
+                        })
+                message =  "You have modified your comment"
+                print(message)
+                print(comment)
+        
+            else:
+                message =  "You haven't made a comment yet"
+                print(message)
+
 
 
 class ModeratorUserModels(UserModels):
