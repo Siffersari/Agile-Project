@@ -89,5 +89,17 @@ class ModeratorUserModels(UserModels):
         return comment
 
 
-    def delete_comment(self):
-        pass
+    def delete_comment(self, comment_id):
+        """ 
+        Deletes a comment given an id 
+        """
+
+        comment = [(ind,item) for (ind, item) in enumerate(comments) if item["id"] == comment_id]
+
+        if not comment:
+            return "No comment with id {} exists".format(comment_id)
+
+        comments.remove(comments[comment[0][0]])
+
+
+        return "The comment with id {} has been deleted successfully".format(comment_id) 
