@@ -87,13 +87,7 @@ class UserModels(object):
        if resp == "yes":
            UserModels.edit_comment(self)
        else:
-           print("Sad to see you go!!")
-        
-
-    
-    
-        
-       
+           print("Sad to see you go!!") 
 
     def edit_comment(self):
         pass
