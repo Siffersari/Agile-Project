@@ -79,8 +79,15 @@ class ModeratorUserModels(UserModels):
         super.__init__(UserModels)
         self.role = "moderator"
 
-    def edit_comment(self):
-        pass
+
+    def edit_comment(self, comment_id, comment_title, comment_body):
+        for comment in comments:
+            if comment['id'] == comment_id:
+                comment['title'] = comment_title
+                comment['body'] = comment_body
+
+        return comment
+
 
     def delete_comment(self):
         pass
