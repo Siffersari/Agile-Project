@@ -1,4 +1,4 @@
-from user_models import UserModels
+from user_models import UserModels, users
 
 
 print("Welcome to the Application.\n Please choose an action:")
@@ -16,9 +16,10 @@ def choose_option():
         password2 = str(input("Confirm password:"))
         user = UserModels(firstname, lastname, username, password, password2)
         register_user = user.signup()
-        print(register_user, "Please login.")
-        print("2. Login to your account.")
+        print(register_user, "Please login.", users)
+        print("2. Login to your account.\n")
         option = int(input("Please choose an action: "))
+        print(users)
         username = str(input("Enter username:"))
         password = str(input("Enter password:"))
         # user = UserModels()
