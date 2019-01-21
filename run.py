@@ -16,7 +16,14 @@ def choose_option():
         password2 = str(input("Confirm password:"))
         user = UserModels(firstname, lastname, username, password, password2)
         register_user = user.signup()
-        return register_user
+        print(register_user, "Please login.")
+        print("2. Login to your account.")
+        option = int(input("Please choose an action: "))
+        username = str(input("Enter username:"))
+        password = str(input("Enter password:"))
+        # user = UserModels()
+        login_user = UserModels.login(username, password)
+        print(login_user)
     elif option == 2:
         username = str(input("Enter username:"))
         password = str(input("Enter password:"))
