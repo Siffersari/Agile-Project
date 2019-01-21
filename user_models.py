@@ -22,6 +22,8 @@ class UserModels(object):
         This method register user details 
         that have been provided
         """
+        data = [self.firstname, self.lastname,
+                self.username, self.password, self.password2]
 
         pass
 
