@@ -28,7 +28,7 @@ class UserModels(object):
         that have been provided
         """
         required = [self.firstname, self.lastname,
-                self.username, self.password, self.password2]
+                    self.username, self.password, self.password2]
 
         missing = [item for item in required if not item]
 
@@ -56,17 +56,23 @@ class UserModels(object):
         """
         This method checks if a user is in the users list
         """
-        response = None
-        for user in users:
-            if user['username'] == username:
-                if user['password'] == password:
-                    UserModels.logged_in_at = datetime.now()
-                    response = "Logged in successfully"
-                response = "wrong password"
-            response = "wrong credentials. Signup if not already registered"
-        return response
+        user_found = [
+            person for person in users if person["username"] == username]
+
+        if not user_found:
+            return "wrong credentials. Signup if not already registered"
+
+        if not user_found[0]["password"] == password:
+            return "wrong password"
+
+        UserModels.logged_in_at = datetime.now()
+
+        return "Logged in successfully"
+
+        return "The comment with id {} has been deleted successfully".format(comment_id)
 
     def create_comment(self, username):
+<<<<<<< HEAD
        """Create a comment."""
        comment_id = len(self.comments) + 1
        title = input("Enter comment title:  ")
@@ -89,6 +95,30 @@ class UserModels(object):
            UserModels.edit_comment(self)
        else:
            print("Sad to see you go!!") 
+=======
+        """Create a comment."""
+        comment_id = len(self.comments)
+        title = input("Enter comment title:  ")
+        body = input("Enter comment body:    ")
+        username = [user for user in users if user["username"] == username]
+        created_at = datetime.now()
+        comment = {
+            "id": comment_id,
+            "title": title,
+            "body": body,
+            "posted_by": username,
+            "created_at": created_at
+        }
+        self.comments.append(comment)
+        print("Comment created")
+        print(comment)
+        resp = str(input("Would you like to edit the comment(yes or no):"))
+
+        if resp == "yes":
+            UserModels.edit_comment(self)
+        else:
+            print("Sad to see you go!!")
+>>>>>>> [Finishes #163362204]  Fix login
 
     def edit_comment(self):
         pass
@@ -98,6 +128,7 @@ class ModeratorUserModels(UserModels):
     """
     The moderator user model that defines the moderator user
     """
+
     def __init__(self):
         super.__init__(UserModels)
         self.role = "moderator"
@@ -111,18 +142,17 @@ class ModeratorUserModels(UserModels):
 
         return comment
 
-
     def delete_comment(self, comment_id):
         """ 
         Deletes a comment given an id 
         """
 
-        comment = [(index,item) for (index, item) in enumerate(comments) if item["id"] == comment_id]
+        comment = [(index, item) for (index, item) in enumerate(
+            comments) if item["id"] == comment_id]
 
         if not comment:
             return "No comment with id {} exists".format(comment_id)
 
         comments.remove(comments[comment[0][0]])
 
-
-        return "The comment with id {} has been deleted successfully".format(comment_id) 
+        return "The comment with id {} has been deleted successfully".format(comment_id)
