@@ -25,7 +25,26 @@ class UserModels(object):
         data = [self.firstname, self.lastname,
                 self.username, self.password, self.password2]
 
-        pass
+        missing = [item for item in data if not item]
+
+        if missing:
+            return "Please make sure that all fields are not empty"
+
+        if not self.password == self.password2:
+            return "Please make sure that both passwords match"
+
+        data = {
+            "id": len(users) + 1,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "username": self.username,
+            "password": self.password,
+            "role": self.role
+        }
+
+        users.append(data)
+
+        return "You have been successfully registered. Your user id is {}".format(data["id"])
 
     def login(self):
         pass
