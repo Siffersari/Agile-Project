@@ -69,3 +69,37 @@ class UserModels(object):
 
     def edit_comment(self):
         pass
+
+
+class ModeratorUserModels(UserModels):
+    """
+    The moderator user model that defines the moderator user
+    """
+    def __init__(self):
+        super.__init__(UserModels)
+        self.role = "moderator"
+
+    @staticmethod
+    def edit_comment(comment_id, comment_title, comment_body):
+        for comment in comments:
+            if comment['id'] == comment_id:
+                comment['title'] = comment_title
+                comment['body'] = comment_body
+
+        return comment
+
+
+    def delete_comment(self, comment_id):
+        """ 
+        Deletes a comment given an id 
+        """
+
+        comment = [(index,item) for (index, item) in enumerate(comments) if item["id"] == comment_id]
+
+        if not comment:
+            return "No comment with id {} exists".format(comment_id)
+
+        comments.remove(comments[comment[0][0]])
+
+
+        return "The comment with id {} has been deleted successfully".format(comment_id) 
