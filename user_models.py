@@ -79,8 +79,8 @@ class ModeratorUserModels(UserModels):
         super.__init__(UserModels)
         self.role = "moderator"
 
-
-    def edit_comment(self, comment_id, comment_title, comment_body):
+    @staticmethod
+    def edit_comment(comment_id, comment_title, comment_body):
         for comment in comments:
             if comment['id'] == comment_id:
                 comment['title'] = comment_title
