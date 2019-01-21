@@ -94,7 +94,7 @@ class ModeratorUserModels(UserModels):
         Deletes a comment given an id 
         """
 
-        comment = [(ind,item) for (ind, item) in enumerate(comments) if item["id"] == comment_id]
+        comment = [(index,item) for (index, item) in enumerate(comments) if item["id"] == comment_id]
 
         if not comment:
             return "No comment with id {} exists".format(comment_id)
