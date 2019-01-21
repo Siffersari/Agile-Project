@@ -1,3 +1,5 @@
+from datetime import datetime
+
 users, comments = [], []
 
 
@@ -14,6 +16,7 @@ class UserModels(object):
         self.username = username
         self.password = password
         self.password2 = password2
+        self.logged_in_at = None
         self.role = role
         self.db = users
 
@@ -34,6 +37,7 @@ class UserModels(object):
         for user in users:
             if user['username'] == username:
                 if user['password'] == password:
+                    UserModels.logged_in_at = datetime.now()
                     response = "Logged in successfully"
                 response = "wrong password"
             response = "wrong credentials. Signup if not already registered"
