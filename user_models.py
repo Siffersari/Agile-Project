@@ -69,3 +69,18 @@ class UserModels(object):
 
     def edit_comment(self):
         pass
+
+
+class ModeratorUserModels(UserModels):
+    """
+    The moderator user model that defines the moderator user
+    """
+    def __init__(self):
+        super.__init__(UserModels)
+        self.role = "moderator"
+
+    def edit_comment(self):
+        pass
+
+    def delete_comment(self):
+        pass
