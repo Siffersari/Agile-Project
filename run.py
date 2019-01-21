@@ -14,4 +14,6 @@ def choose_option():
             UserModels.signup()
         elif option == 2:
             UserModels.login()
+        else:
+            print("Not a valid option. Please enter a valid option.")
 choose_option()
