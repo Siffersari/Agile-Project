@@ -19,14 +19,25 @@ class UserModels(object):
 
     def signup(self):
         """
-        This method register user details 
+        This method register user details
         that have been provided
         """
 
         pass
 
-    def login(self):
-        pass
+    @staticmethod
+    def login(username, password):
+        """
+        This method checks if a user is in the users list
+        """
+        response = None
+        for user in users:
+            if user['username'] == username:
+                if user['password'] == password:
+                    response = "Logged in successfully"
+                response = "wrong password"
+            response = "wrong credentials. Signup if not already registered"
+        return response
 
     def create_comment(self):
         pass
