@@ -9,7 +9,7 @@ def choose_option():
     option = input("Please choose an action: ")
     if isinstance(option, str):
         print("Please enter a valid action!")
-    else: 
+    else:
         if option == 1:
             UserModels.signup()
         elif option == 2:
