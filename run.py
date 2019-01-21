@@ -6,6 +6,7 @@ def choose_option():
     """Selecting an action to perform."""
     print("1. Register an account.")
     print("2. Login to your account.")
+    print("3. Add a comment.")
     option = int(input("Please choose an action: "))
     if option == 1:
         # firstname, lastname, username, password, password2,
@@ -31,6 +32,9 @@ def choose_option():
         # user = UserModels()
         login_user = UserModels.login(username, password)
         return login_user
+    elif option == 3:
+        user = UserModels(firstname=None, lastname=None, username=None, password=None, password2=None)
+        comments = user.create_comment(username=None)
     else:
         print("Not a valid option. Please enter a valid option.")
 choose_option()
