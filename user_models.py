@@ -10,6 +10,7 @@ class UserModels(object):
     """
 
     def __init__(self, firstname, lastname, username, password, password2, role="user"):
+        """Class constructor."""
 
         self.firstname = firstname
         self.lastname = lastname
@@ -33,7 +34,7 @@ class UserModels(object):
         if missing:
             return "Please make sure that all fields are not empty"
 
-        if not self.password == self.password2:
+        if not (self.password == self.password2):
             return "Please make sure that both passwords match"
 
         data = {
