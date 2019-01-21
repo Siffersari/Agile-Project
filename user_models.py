@@ -20,6 +20,7 @@ class UserModels(object):
         self.logged_in_at = None
         self.role = role
         self.db = users
+        self.comments = comments
 
     def signup(self):
         """
@@ -65,8 +66,29 @@ class UserModels(object):
             response = "wrong credentials. Signup if not already registered"
         return response
 
-    def create_comment(self):
-        pass
+    def create_comment(self, username):
+       """Create a comment."""
+       comment_id = len(self.comments)
+       title = input("Enter comment title:  ")
+       body = input("Enter comment body:    ")
+       username = [user for user in users if user["username"] == username]
+       created_at = datetime.now()
+       comment = {
+           "id": comment_id,
+           "title": title,
+           "body": body,
+           "posted_by": username,
+           "created_at": created_at
+       }
+       self.comments.append(comment)
+       print("Comment created")
+       print(comment)
+       resp = str(input("Would you like to edit the comment(yes or no):"))
+
+       if resp == "yes":
+           UserModels.edit_comment(self)
+       else:
+           print("Sad to see you go!!") 
 
     def edit_comment(self):
         pass
