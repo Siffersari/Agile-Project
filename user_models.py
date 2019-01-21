@@ -22,10 +22,10 @@ class UserModels(object):
         This method register user details 
         that have been provided
         """
-        data = [self.firstname, self.lastname,
+        required = [self.firstname, self.lastname,
                 self.username, self.password, self.password2]
 
-        missing = [item for item in data if not item]
+        missing = [item for item in required if not item]
 
         if missing:
             return "Please make sure that all fields are not empty"
