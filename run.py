@@ -27,7 +27,7 @@ def choose_option():
         print(login_user)
     elif option == 2:
         username = str(input("Enter username:"))
-        password = str(input("Enter password:"))
+        password = str(input("Enter password:")) 
         # user = UserModels()
         login_user = UserModels.login(username, password)
         return login_user
